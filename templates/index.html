@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head><script src={{ url_for('static', filename='js/color-modes.js') }}></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.118.2">
+    <title>Navbar Template · Bootstrap v5.3</title>
+
+    <link rel="canonical" href='https://getbootstrap.com/docs/5.3/examples/navbars/'>
+
+
+
+    <link rel="stylesheet" href='https://cdn.jsdelivr.net/npm/@docsearch/css@3'>
+
+<link href={{ url_for('static', filename='dist/css/bootstrap.min.css') }} rel='stylesheet'>
+
+    <style>
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+      * {
+        box-sizing: border-box;
+        }
+
+        *:focus {
+          outline: none;
+        }
+        .login {
+        margin: 20px auto;
+        width: 300px;
+        }
+        .login-screen {
+        background-color: #FFF;
+        padding: 20px;
+        border-radius: 5px
+        }
+
+        .app-title {
+        text-align: center;
+        color: #777;
+        }
+
+        .login-form {
+        text-align: center;
+        }
+        .control-group {
+        margin-bottom: 10px;
+        }
+
+        input {
+        text-align: center;
+        border: 2px solid transparent;
+        border-radius: 3px;
+        font-size: 16px;
+        font-weight: 200;
+        padding: 10px 0;
+        width: 250px;
+        transition: border .5s;
+        }
+
+        input:focus {
+        border: 2px solid #FFD600;
+        box-shadow: none;
+        }
+
+        #login_btn {
+          border: 2px solid transparent;
+          background: #FFD600;
+          color: #2980B9;
+          font-size: 16px;
+          line-height: 25px;
+          padding: 10px 0;
+          text-decoration: none;
+          text-shadow: none;
+          border-radius: 3px;
+          box-shadow: none;
+          transition: 0.25s;
+          display: block;
+          width: 250px;
+          margin: 0 auto;
+        }
+
+
+
+        .login-link {
+          font-size: 12px;
+          color: #444;
+          display: block;
+          margin-top: 12px;
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="navbars.css" rel="stylesheet">
+  </head>
+  <div>
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+      </symbol>
+    </svg>
+
+    <nav class="navbar navbar-expand-md bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand col-lg-2 me-0" href="#" style="color: #FFD600;">МАСТЕР КАФЕЛЬ</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Переключатель навигации">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav col-lg-9 justify-content-lg-center">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#how_work" style="color: #FFD600;">Как мы работаем</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#works" style="color: #FFD600;">Наши работы</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#remont" style="color: #FFD600;">Виды ремонта</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#my_form" style="color: #FFD600;">Оставить заявку</a>
+            </li>
+          </ul>
+          <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+            <button href="form.html" type="button" class="btn btn-link" style="color: #FFD600;">+7(964)328-59-00</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  <a style="color: #FFD600;">Ремонт квартирв новосторойках<br><br>  Ремонт квартир "под ключ"<br><br>  Ремонт санузлов</a>
+  <div class="container mt-5">
+    <div class="row">
+      <div id="my_img" class="col text-center">
+        <img src={{ url_for('static', filename='A4_1.png') }} alt="" width="1000" class="img-fluid">
+      </div>
+    </div>
+  </div>
+  <div class="d-grid gap-2 col-3 mx-auto">
+    <button class="btn btn-warning" type="button" href='#remont'>Выбрать ремонт</button>
+  </div>
+  <hr class="featurette-divider">
+  <div class="container mt-5">
+    <div class="row">
+      <div id="works" class="col text-center">
+        <img src={{ url_for('static', filename='WORKS.png') }} alt="" width="1000" class="img-fluid">
+      </div>
+    </div>
+  </div>
+  <br>
+  <div id="carouselExampleIndicators" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src={{ url_for('static', filename='galerry1.png') }} class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src={{ url_for('static', filename='gallery2.png') }} class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src={{ url_for('static', filename='gallery3.png') }} class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src={{ url_for('static', filename='gallery4.png') }} class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src={{ url_for('static', filename='gallery5.png') }} class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src={{ url_for('static', filename='gallery6.png') }} class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Предыдущий</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Следующий</span>
+    </button>
+  </div>
+  <div class="container mt-5">
+    <div class="row">
+      <div id="how_work" class="col text-center">
+        <img src={{ url_for('static', filename='how_work.png') }} alt="" width="1000" class="img-fluid">
+      </div>
+    </div>
+  </div>
+  <hr class="featurette-divider">
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row row-cols-2">
+      <div class="col-lg-3">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+        <h2 class="fw-normal"><ya-tr-span data-index="10-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Heading" data-translation="Заголовок" data-ch="0" data-type="trSpan">Заявка</ya-tr-span></h2>
+        <p><ya-tr-span data-index="11-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Some representative placeholder content for the three columns of text below the carousel. " data-translation="Некоторое репрезентативное содержимое-заполнитель для трех столбцов текста под каруселью. " data-ch="0" data-type="trSpan">Вы оставляете заявку и встречаетесь с специалистом </ya-tr-span><ya-tr-span data-index="11-1" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="This is the first column." data-translation="Это первый столбец." data-ch="0" data-type="trSpan">Это первый столбец.</ya-tr-span></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-3">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+        <h2 class="fw-normal"><ya-tr-span data-index="12-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Heading" data-translation="Заголовок" data-ch="1" data-type="trSpan">Смета</ya-tr-span></h2>
+        <p><ya-tr-span data-index="13-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Another exciting bit of representative placeholder content. " data-translation="Еще один интересный фрагмент репрезентативного контента-заполнителя. " data-ch="0" data-type="trSpan">В этот же день мы производим расчет ремонта </ya-tr-span><ya-tr-span data-index="13-1" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="This time, we've moved on to the second column." data-translation="На этот раз мы перешли ко второму столбцу." data-ch="0" data-type="trSpan">На этот раз мы перешли ко второму столбцу.</ya-tr-span></p>        </div><!-- /.col-lg-4 -->
+      <div class="col-lg-3">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+        <h2 class="fw-normal"><ya-tr-span data-index="14-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Heading" data-translation="Заголовок" data-ch="1" data-type="trSpan">Ремонт</ya-tr-span></h2>
+        <p><ya-tr-span data-index="15-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="And lastly this, the third column of representative placeholder content." data-translation="И, наконец, это третий столбец репрезентативного содержимого-заполнителя." data-ch="0" data-type="trSpan">На следующий день мы завозим материалы и начинаем работы</ya-tr-span></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-3">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+        <h2 class="fw-normal"><ya-tr-span data-index="14-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Heading" data-translation="Заголовок" data-ch="1" data-type="trSpan">Прием
+          Работы</ya-tr-span></h2>
+        <p><ya-tr-span data-index="15-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="And lastly this, the third column of representative placeholder content." data-translation="И, наконец, это третий столбец репрезентативного содержимого-заполнителя." data-ch="0" data-type="trSpan">Вы принимаете и оплачиваете каждый этап работы</ya-tr-span></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+    <!-- /END THE FEATURETTES -->
+
+  </div>
+  <hr class="featurette-divider">
+  <div class="container mt-5">
+    <div class="row">
+      <div id="my_img" class="col text-center">
+        <img src={{ url_for('static', filename='POST.png') }} alt="" width="1000" class="img-fluid">
+      </div>
+    </div>
+  </div>
+  <form action="" method="post" id='my_form'>
+    <div class="login">
+      <div class="login-screen">
+        <div class="app-title">
+          <h1>Заявка</h1>
+        </div>
+
+        <div class="login-form">
+          <div class="control-group">
+          <input type="text" name='phone_number' placeholder="Номер телефона" id="login-name">
+          <label class="login-field-icon fui-user" for="phone_number"></label>
+          </div>
+
+          <div class="control-group">
+          <input type="name" name='name' placeholder="Ваше имя" id="login-pass">
+          <label class="login-field-icon fui-lock" for="name"></label>
+          </div>
+
+          <button type="submit" class="btn btn-warning">Отправить</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <hr class="featurette-divider">
+  <div class="container mt-5">
+    <div class="row">
+      <div id="my_img" class="col text-center">
+        <img src={{ url_for('static', filename='priem.png') }} alt="" width="1000" class="img-fluid">
+      </div>
+    </div>
+  </div>
+  <div class="row row-cols-2 row-cols-md-5 g-4">
+    <div class="col">
+      <div class="card h-100">
+        <img src={{ url_for('static', filename='age.png') }} class="card-img-top" alt="{{ url_for('static', filename='photo_2.jpg') }}" style='max-width: 310px;'>
+        <div class="card-body">
+          <h6 class="card-title">Опыт более 16 лет</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src={{ url_for('static', filename='alarm.png') }} class="card-img-top" alt="{{ url_for('static', filename='photo_2.jpg') }}">
+        <div class="card-body">
+          <h6 class="card-title">Четкое соблюдение сроков</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src={{ url_for('static', filename='emoji.png') }} class="card-img-top" alt="{{ url_for('static', filename='photo_2.jpg') }}">
+        <div class="card-body">
+          <h6 class="card-title">Вежливые и позитивные мастера</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src={{ url_for('static', filename='receive.png') }} class="card-img-top" alt="{{ url_for('static', filename='photo_2.jpg') }}">
+        <div class="card-body">
+          <h6 class="card-title">Смета не растет</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <img src={{ url_for('static', filename='send_money.png') }} class="card-img-top" alt="{{ url_for('static', filename='photo_2.jpg') }}">
+        <div class="card-body">
+          <h6 class="card-title">Оплата после выполнения работ</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="featurette-divider">
+  <div class="container mt-5">
+    <div class="row">
+      <div id="remont" class="col text-center">
+        <img src={{ url_for('static', filename="kakoy_remont.png") }} alt="" width="1000" class="img-fluid">
+      </div>
+    </div>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card border-warning">
+        <img src={{ url_for('static', filename="remont2.png") }} class="card-img-top" talt="{{ url_for('static', filename='photo_2.jpg') }}">
+        <div class="card-body">
+          <h3 class="card-title" style="color: #FFD600;">Эконом</h3>
+          <h5 class="card-text">- Замена обоев<br>
+            - Замена пола<br>
+            - Покраска потолка</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card border-warning">
+        <img src={{ url_for('static', filename="remont3.png") }} class="card-img-top" alt="{{ url_for('static', filename='photo_2.jpg') }}">
+        <div class="card-body">
+          <h3 class="card-title" style="color: #FFD600;">Стандарт</h3>
+          <h5 class="card-text">- Демонтаж<br>
+            - Выравнивание потолков<br>
+            - Выравнивание стен<br>
+            - Замена обоев<br>
+            - Замена пола<br>
+            - Покраска потолка</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card border-warning">
+        <img src={{ url_for('static', filename="remont1.png") }} class="card-img-top" alt="{{ url_for('static', filename='photo_2.jpg') }}">
+        <div class="card-body">
+          <h3 class="card-title" style="color: #FFD600;">Дизайн-проект</h3>
+          <h5 class="card-text" >- Ремонт “под ключ”<br>
+            - Работа по дизайн проекту<br>
+              с использованием современных,<br>
+              новейших, дорогостоящих материалов
+            </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-grid gap-2 col-3 mx-auto">
+    <button class="btn btn-warning" type="button" href='#my_form'>Оставить заявку</button>
+  </div>
+<script src={{ url_for('static', filename='/dist/js/bootstrap.bundle.min.js') }}></script>
+
+</body>
+</html>
