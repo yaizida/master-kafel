@@ -10,3 +10,6 @@ HTML, CSS, Bootstrap, Python, Flask, UWSGI, NGINX
 
 
 ### Автор - Бурковский Никита
+
+С самим проектом можно ознакомиться по ссылыке
+https://master-kafel.ru/
